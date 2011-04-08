@@ -41,6 +41,7 @@ module JSHint
       arguments = "#{JSHINT_FILE} #{option_string.inspect.gsub(/\$/, "\\$")} #{@file_list.join(' ')}"
       Utils.xputs "Arguments: #{arguments}\n\n"
       success = call_java_with_status(RHINO_JAR_FILE, RHINO_JAR_CLASS, arguments)
+      Utils.xputs "Return: #{success ? 'SUCCESS' : 'FAILED'}\n\n"
       raise LintCheckFailure, "JSHint test failed." unless success
     end
 
